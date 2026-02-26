@@ -5,13 +5,6 @@ const Domain = ({ domain, ethDaddy, provider, id }) => {
   const [owner, setOwner] = useState(null)
   const [hasSold, setHasSold] = useState(false)
 
-  const getOwner = async () => {
-    if (domain.isOwned || hasSold) {
-      const owner = await ethDaddy.ownerOf(id)
-      setOwner(owner)
-    }
-  }
-
   const buyHandler = async () => {
     const signer = await provider.getSigner()
     const transaction = await ethDaddy.connect(signer).mint(id, { value: domain.cost })
@@ -21,8 +14,14 @@ const Domain = ({ domain, ethDaddy, provider, id }) => {
   }
 
   useEffect(() => {
+    const getOwner = async () => {
+      if (domain.isOwned || hasSold) {
+        const owner = await ethDaddy.ownerOf(id)
+        setOwner(owner)
+      }
+    }
     getOwner()
-  }, [hasSold])
+  }, [domain.isOwned, hasSold, ethDaddy, id])
 
   return (
     <div className='card'>
