@@ -47,6 +47,7 @@
     "@types/chai": "^4.3.4",
     "@types/mocha": "^9.1.1",
     "chai": "^4.3.7",
+    "dotenv": "^17.3.1",
     "ethers": "^5.7.2",
     "hardhat": "^2.12.0",
     "hardhat-gas-reporter": "^1.0.9",
