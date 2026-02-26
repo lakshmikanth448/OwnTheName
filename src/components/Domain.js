@@ -13,6 +13,8 @@ const Domain = ({ domain, ethDaddy, provider, id }) => {
     setHasSold(true)
   }
 
+  // fetch owner when domain is owned or after purchase
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const getOwner = async () => {
       if (domain.isOwned || hasSold) {
