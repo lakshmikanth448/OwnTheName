@@ -1,4 +1,11 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# deploy to Sepolia
+npx hardhat run scripts/deploy.js --network sepolia
+
+# update frontend config (example)
+# edit src/config.json -> set 11155111.ETHDaddy.address to the deployed address
+git add src/config.json
+git commit -m "Use Sepolia contract address"
+git push origin main# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules

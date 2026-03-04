@@ -24,7 +24,9 @@ function App() {
     setProvider(provider)
 
     const network = await provider.getNetwork()
-    const ethDaddy = new ethers.Contract(config[network.chainId].ETHDaddy.address, ETHDaddy, provider)
+    // Ensure you are accessing the .abi property of the JSON file
+const ethDaddy = new ethers.Contract(config[network.chainId].ETHDaddy.address, ETHDaddy.abi, provider)
+
     setETHDaddy(ethDaddy)
 
     const maxSupply = await ethDaddy.maxSupply()
